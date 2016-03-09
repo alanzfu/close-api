@@ -1,0 +1,21 @@
+{
+  "name": "close5 coding challenge",
+  "version": "0.0.1",
+  "description": "A simple API",
+  "main": "app.js",
+  "dependencies": {
+    "bluebird": "^3.2.2",
+    "body-parser": "^1.14.2",
+    "chai": "~3.4.1",
+    "express": "^4.13.3",
+    "express-session": "^1.13.0",
+    "history": "^1.17.0",
+    "lodash": "^4.0.0",
+    "mocha": "~2.3.4"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Alan Fu",
+  "license": "ISC"
+}
