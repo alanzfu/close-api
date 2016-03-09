@@ -12,22 +12,62 @@ module.exports = function (app) {
     var long = parseFloat(req.params.long);
 
     var actions = {
-      "creationdate": function () {},
-      "itemprice": function () {},
-      "location": function () {}
-    }
+      "creationdate": function () {
+        date.sort(function(a,b){
+          if(ascending === "true") {
+            return Date.parse(a.createdAt) - Date.parse(b.createdAt);
+          } else {
+            return Date.parse(b.createdAt) - Date.parse(a.createdAt);
+          }
 
-    actions[sortBy]();
+        });
+        res.json(date);
+      },
+      "itemprice": function () {
+        date.sort(function(a,b){
+          if(ascending === "true") {
+            return a.price - b.price;
+          } else {
+            return b.price - a.price;
+          }
+        })
+        res.json(date);
+      },
+      "location": function () {
+        if(lat && long) {
+          res.json(utility.find(data, lat, long));
+        } else {
+          res.status(404).send('Invalid Lat/Long value');
+        }
+      }
+    }
+    if(actions[sortby]) {
+      actions[sortBy]();
+    } else {
+      res.status(404).send('Sorry bad request');
+    }
   });
 
   // * Any single item by its id
-  app.get('/api/items/:item_id', function(req, res) {
-
+  app.get('/api/items/:itemId', function(req, res) {
+    var itemId = req.params.itemId;
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].id === itemId) {
+        res.json(data[i]);
+      }
+    }
+    res.status(404).send('Sorry no item with such ID');
   });
 
   // * An array of items based on any userId
-  app.get('/api/users/:user_id', function(req, res) {
-
+  app.get('/api/users/:userId', function(req, res) {
+    var results = [];
+    for (var i = 0; i < data.length; i++) {
+      if (data[i].userId === req.params.userId) {
+        results.push(data[i]);
+      }
+    }
+    res.json(results);
   });
 
 };
