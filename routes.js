@@ -109,7 +109,7 @@ module.exports = function (app) {
       "status" : "removed",
       "createdAt" : "2014-08-26T23:54:48.754Z"
   }];
-
+var i = 0;
 
 // * The entire list sorted by creation date (Ascending and Descending)
 // * The entire listed sorted by the item’s price (Ascending and Descending)
