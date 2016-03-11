@@ -13,4 +13,4 @@
 |Get Items by User Id|/api/users/:userId|[itemObj...]|
 |Get All Items By Creation Date (ASC/true or DESC/false)|/api/items/?sortby=creationdate&ascending=true|[itemObj...]|
 |Get All Items By Price (ASC/true or DESC/false)|/api/items/?sortby=creationdate&ascending=true|[itemObj...]|
-|Get Items By Lat/Long|/api/items/?sortby=location&lat=FLOAT&long=FLOAT|[itemObj...]|
+|Get Items By Lat/Long within 50 miles|/api/items/?sortby=location&lat=FLOAT&long=FLOAT|[itemObj...]|
